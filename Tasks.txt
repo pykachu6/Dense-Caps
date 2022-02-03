@@ -1,0 +1,15 @@
+Overall Tasks:
+	- Overall distributions
+	- Find distributions for X atom appearing in N molecules
+	
+Anthony:
+	Band Gap
+
+Alex:
+	Density
+
+Cameron:
+	Formation Energy
+
+Tyson:
+	Volume	
