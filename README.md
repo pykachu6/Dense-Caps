@@ -1,3 +1,3 @@
-# Dense-Caps Tyson's Edit of Readme
+# Dense-Caps
 Group 7 project
-Tyson's branch
+
