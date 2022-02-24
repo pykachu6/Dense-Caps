@@ -63,44 +63,69 @@ def simple_count_in_instance(instance_index, string, element):
     
 def element_count(formula_string):
     parenthetical = get_parentheses(formula_string)
+    
     ele_count = {}
     for elements in element_list:
         
         num_ele_n = 0
         occurences = get_occ_indices(formula_string, elements)
         for instance in occurences:
+            coeff = 1
             inparentheses = False
             
+            close_index = 0
             for open_par in parenthetical:
-                close_index = 0
+               
+                
                 if open_par < instance < parenthetical[open_par]:
                     inparentheses = True
+                   
                     close_index = parenthetical[open_par]
+                    
+                    
+                    
+                    
+                    
                 else:
                     pass
                 
             if inparentheses == False:
-                num_ele_n += simple_count_in_instance(instance, formula_string, elements)
-                
+                pass
+              
                 
             else:
 
-                num_in_par = 0
-                
-                try:
 
-                    if formula_string[parenthetical[open_par]+1].isdigit() == True:
-                        coeff = int(formula_string[parenthetical[open_par]+1])
+                try:
+                    
+                   
+                    if formula_string[close_index + 1].isdigit() == True:
+                        
+                        
+                        try:
+                        
+                            if formula_string[close_index + 2].isdigit() == True:
+                                coeff = int(formula_string[close_index + 1:close_index + 3])
+                               
+                            else:
+                                coeff = int(formula_string[close_index + 1])
+                                
+                        except IndexError:
+                            coeff = int(formula_string[close_index + 1])
+                       
                     else:
                         coeff = 1
+                        
                 except IndexError:
                     coeff = 1
-                    
-                num_ele_n += simple_count_in_instance(instance, formula_string, elements)*coeff
-                    
+                
+               
+            num_ele_n += simple_count_in_instance(instance, formula_string, elements)*coeff
+            
+                  
                     
         ele_count[elements] = num_ele_n
-        
     return ele_count
+
 
 ################################################################################
