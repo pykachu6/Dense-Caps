@@ -1,21 +1,25 @@
-import tkinter as tk
+# Import the required libraries
+from tkinter import *
 
-class Example(tk.Frame):
-    def __init__(self, parent):
-        tk.Frame.__init__(self, parent,geometry("500x500+0+0"))
+# Create an instance of tkinter frame or window
+win = Tk()
 
-        label = tk.Label(self, text="This should be centered")
-        label.grid(row=1, column=1)
+# Set the size of the tkinter window
+win.geometry("700x350")
 
-        self.grid_rowconfigure(0, weight=1)
-        self.grid_rowconfigure(2, weight=1)
-        self.grid_columnconfigure(0, weight=1)
-        self.grid_columnconfigure(2, weight=1)
+# Define a function update the label text
+def on_click():
+   label["text"] = "Python"
+   b["state"] = "disabled"
 
-if __name__ == "__main__":
-    root = tk.Tk()
-    Example(root).grid(sticky="nsew")
-    root.grid_rowconfigure(0, weight=1)
-    root.grid_columnconfigure(0, weight=1)
+# Create a label widget
+label = Label(win, text="Click the Button to update this Text",
+font=('Calibri 15 bold'))
+label.pack(pady=20)
 
-    root.mainloop()
+# Create a button to update the label widget
+b = Button(win, text="Update Label", command=on_click)
+b.pack(pady=20)
+
+win.mainloop()
+Output

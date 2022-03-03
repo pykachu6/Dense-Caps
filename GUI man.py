@@ -18,18 +18,25 @@ def close_win(e):
 
 
 def printInput():
-    print('Hey get values from here')
-#     inp = inputtxt.get(1.0, "end-1c")
-#     lbl.config(text = "Provided Input: "+inp)
-  
+#     print('Hey get values from here')
+    val_formula = inputtxt_formula.get("1.0","end-1c")
+    val_spacegroup = inputtxt_spacegroup.get("1.0","end-1c")
+    val_formationenergy = inputtxt_formationenergy.get("1.0","end-1c")
+    val_bandgap = inputtxt_bandgap.get("1.0","end-1c")
+    val_density = inputtxt_density.get("1.0","end-1c")
+    
+    if val_formula == "" and val_spacegroup == "" and val_formationenergy == "" and val_bandgap == "" and val_density == "":
+        blank_label["text"]= "Enter at least one field!"
+
 
 # Input Widget
 row = 0
-tk.Label(win, text="Inputs: ", font=('Aerial 11')).grid(row=row, column=0,sticky = ' ', columnspan = 3)
+input_label = tk.Label(win, text="Inputs: ", font=('Aerial 11')).grid(row=row, column=0,sticky = ' ', columnspan = 3)
 
 # Blank Widget
 row = 1
-tk.Label(win, text=" ", font=('Aerial 11')).grid(row=row, column=0,stick = W)
+blank_label = tk.Label(win, text=" ", font=('Aerial 11'))
+blank_label.grid(row=row, column=0,sticky = ' ', columnspan = 3)
 
 # Formula Widget
 row = 2
