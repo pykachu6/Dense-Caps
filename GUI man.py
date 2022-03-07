@@ -17,9 +17,30 @@ def close_win(e):
 
 
 def buttonreset():
-    print(1)
-    
+    outputtxt_formula.configure(state  = "normal")
+    outputtxt_spacegroup.configure(state  = "normal")
+    outputtxt_formationenergy.configure(state  = "normal")
+    outputtxt_bandgap.configure(state  = "normal")
+    outputtxt_density.configure(state  = "normal")
 
+    inputtxt_formula.delete(1.0,"end")
+    inputtxt_spacegroup.delete(1.0,"end")
+    inputtxt_formationenergy.delete(1.0,"end")
+    inputtxt_bandgap.delete(1.0,"end")
+    inputtxt_density.delete(1.0,"end")
+    input_blank_label["text"]= " "
+    
+    outputtxt_formula.delete(1.0,"end")
+    outputtxt_spacegroup.delete(1.0,"end")
+    outputtxt_formationenergy.delete(1.0,"end")
+    outputtxt_bandgap.delete(1.0,"end")
+    outputtxt_density.delete(1.0,"end")
+
+    outputtxt_formula.configure(state  = "disabled")
+    outputtxt_spacegroup.configure(state  = "disabled")
+    outputtxt_formationenergy.configure(state  = "disabled")
+    outputtxt_bandgap.configure(state  = "disabled")
+    outputtxt_density.configure(state  = "disabled")
     
 def printInput():
 #     print('Hey get values from here')
@@ -50,7 +71,9 @@ def printInput():
     
     if val_formula == "":
         input_blank_label["text"]= "At least enter the formula"
-    
+    else:
+        input_blank_label["text"]= " "
+        
     if val_formula != "":
         outputtxt_formula.insert(1.0, val_formula)
         formula_model = 1
@@ -145,8 +168,16 @@ inputtxt_density.grid(row=row, column=1,stick = W)
 outputtxt_density = tk.Text(win, height = 1, width = 15,state='disable', bg = '#DCDCDC')
 outputtxt_density.grid(row=row, column=3,stick = W)
 
-# Input and Reset Button Widget
+# Structure:
 row = 7
+tk.Label(win, text="Structure", font=('Aerial 11')).grid(row=row, column=0,stick = W)
+
+outputtxt_density = tk.Text(win, height = 1, width = 15,state='disable', bg = '#DCDCDC')
+outputtxt_density.grid(row=row, column=3,stick = W)
+
+
+# Input and Reset Button Widget
+row = 8
 Buttons = tk.Frame(win)
 Buttons.grid(row=row, column=1)
 
