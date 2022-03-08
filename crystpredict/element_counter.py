@@ -6,6 +6,10 @@ element_list= ['Li', 'Si', 'Mn', 'Fe', 'O', 'Co']
 ################################################################################
 
 def get_occ_indices(str_to_search, str_target):
+    """
+    Returns all start indices of str_target in str_to_search as a list
+    """
+    
     occ_index_list =[]
     for index in range(len(str_to_search)):
         #print(str_to_search[index:index + len(str_target)])
@@ -18,6 +22,9 @@ def get_occ_indices(str_to_search, str_target):
 ################################################################################
 
 def get_parentheses(string_with_parentheses):
+    """
+    Returns a dict of open_parenthesis index:close_parenthesis index for all in given string. Does not work with nested parentheses
+    """
     parentheses_index_list ={}
     for o_index in range(len(string_with_parentheses)):
         if string_with_parentheses[o_index] == '(':
@@ -41,6 +48,11 @@ def get_parentheses(string_with_parentheses):
 ################################################################################
 
 def simple_count_in_instance(instance_index, string, element):
+    """
+    Returns the 1 or 2 digit number after a substring at a given index in a string, takes that as the number of elements of that type.
+    If no number, takes number as 1.
+    """
+    
     counter = 0 
     try:
         #print(string[instance_index +len(element)])
@@ -62,6 +74,9 @@ def simple_count_in_instance(instance_index, string, element):
 ################################################################################
     
 def element_count(formula_string):
+    """
+    Returns the sum of the counts of occurences of each element in element_list for a given formula string. Total should be equal to sum of numbers for element not in parentheses + sum of numbers*parentheses coefficient for all in parentheses.
+    """
     parenthetical = get_parentheses(formula_string)
     
     ele_count = {}
