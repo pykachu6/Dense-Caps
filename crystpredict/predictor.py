@@ -1,8 +1,28 @@
+import numpy as np
+import pandas as pd
+import numbers
+from sklearn.model_selection import train_test_split
+from sklearn import tree
+import sklearn
+from sklearn.tree import DecisionTreeRegressor, DecisionTreeClassifier
+from sklearn.ensemble import BaggingClassifier, RandomForestClassifier, GradientBoostingClassifier
+from sklearn.ensemble import BaggingRegressor, RandomForestRegressor, GradientBoostingRegressor
+from sklearn.metrics import r2_score, mean_squared_error, accuracy_score
+from sklearn import neighbors
+from sklearn.model_selection import RandomizedSearchCV
+from prettytable import PrettyTable
+from sklearn.model_selection import cross_validate
+
+import element_counter
+from element_counter import element_count
+import hyperparameter
+from hyperparameter import decision_tree_builder, random_forest_builder, gradient_boosting_builder
+
 ################################################ Model Maker ################################################
 
 def model_maker_score(formula ='',formation_e = '',bandgap_input = '', Nsites = '',Density = '',Volume=''):
 
-    BigDataEnergy = pd.read_csv(r'lithium-ion batteries.csv')
+    BigDataEnergy = pd.read_csv('https://raw.githubusercontent.com/pykachu6/Dunce-Caps/main/lithium-ion%20batteries.csv')
     BigDataEnergy2 = BigDataEnergy[['Formation Energy (eV)', 'Band Gap (eV)','Nsites','Density (gm/cc)','Volume','Crystal System']].copy()
 
     permutations_list = []
@@ -57,7 +77,6 @@ def score_finder(input_df, output_df):
     parameters_dict_Forest = {}
     parameters_dict_Boosting = {}
     big_data_params = {}
-    
     for i in range(0,len(output_df.columns)):
         if output_df.columns[i] != 'Crystal System':
             X_train, X_test, y_train, y_test = train_test_split(input_df, output_df[output_df.columns[i]], test_size=0.10, random_state=42)
