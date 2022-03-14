@@ -3,6 +3,7 @@ from tkinter import *
 import tkinter as tk
 import predictor
 from PIL import ImageTk, Image
+import time
 
 # Create an instance of tkinter win
 win = Tk()
@@ -40,7 +41,8 @@ def printInput():
     
     """ Gets the user inputs, sorts the data, finds what models to run, and prints computed values"""
     
-    
+
+
     listofoutputs = [outputtxt_formula,outputtxt_nsites,outputtxt_formationenergy,outputtxt_bandgap, outputtxt_density,outputtxt_volume,outputtxt_structure,
                      outputtxt_nsites_score,outputtxt_formationenergy_score,outputtxt_bandgap_score, outputtxt_density_score,outputtxt_volume_score,outputtxt_structure_score]
 
@@ -66,6 +68,31 @@ def printInput():
         input_blank_label['text']= 'At least enter the formula'
         
     else:
+        # Progress Bar
+        progress = tk.ttk.Progressbar(win, orient = HORIZONTAL,
+                      length = 100, mode = 'determinate')
+        
+        progress.grid(row = 9, column = 4)
+        
+        # Progress Bar
+        progress_Label = tk.Label(win, text = 'Progress: ')
+        progress_Label.grid(row = 9, column = 3)
+        progress['value'] = 20
+        win.update_idletasks()
+        time.sleep(0.5)
+
+
+        progress['value'] = 40
+        win.update_idletasks()
+        time.sleep(0.5)
+        
+        progress['value'] = 60
+        win.update_idletasks()
+        time.sleep(0.5)
+        
+        progress['value'] = 80
+        win.update_idletasks()
+        time.sleep(0.5)        
         
         Overall_value, Scores = predictor.value_finder(formula = val_formula, 
                                      formation_e   = val_formationenergy,
@@ -110,11 +137,16 @@ def printInput():
         outputtxt_structure_score.insert(1.0, Scores['Crystal System'])
 
         input_blank_label['text']= ''
-    
+        progress['value'] = 100
+        win.update_idletasks()
+        time.sleep(0.5)    
     
     for i in range(0,len(listofoutputs)):
         listofoutputs[i].configure(state = 'disabled')
     
+    time.sleep(1)
+    progress.destroy()    
+    progress_Label.destroy()
 
 """ Everything down below is setting up locations and types of widgets """
 
@@ -139,17 +171,17 @@ def hidden():
     
     """ OOGA BOOGA """ 
 
-    root = tk.Toplevel()
+    win = tk.Toplevel()
     path = '6485498.png'
     img = ImageTk.PhotoImage(Image.open(path))  
-    panel = tk.Label(root, image = img)
+    panel = tk.Label(win, image = img)
     panel.pack(side = "bottom", fill = "both", expand = "yes")
-    root .mainloop()
+    win .mainloop()
 
 
 row = 1
-output_value_label = tk.Label(win, text='Value', font=('Aerial 11')).grid(row=row, column=3,sticky = ' ')
-output_score_label = tk.Label(win, text='Score', font=('Aerial 11')).grid(row=row, column=4,sticky = ' ')
+output_value_label = tk.Label(win, text='Value (All Data)', font=('Aerial 11')).grid(row=row, column=3,sticky = ' ')
+output_score_label = tk.Label(win, text='Score (Split Data)', font=('Aerial 11')).grid(row=row, column=4,sticky = ' ')
 hiddenbutton = tk.Button(win, text=' ', font=('Aerial 11'),bd=0, command = hidden)
 hiddenbutton.grid(row=2, column=4,sticky = ' ')
 
@@ -239,6 +271,11 @@ printButton.grid(row=0, column=2,stick = ' ', columnspan = 1)
 
 resetButton = tk.Button(Buttons,text = 'Reset', command = buttonreset, width = 7)
 resetButton.grid(row=0, column=1,stick = '', columnspan = 1)
+
+
+
+
+
 # Bind the ESC key with the callback function
 win.bind('<Escape>', lambda e: close_win(e))
 
