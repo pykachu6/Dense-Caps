@@ -2,10 +2,12 @@
 from tkinter import *
 import tkinter as tk
 import predictor
+from PIL import ImageTk, Image
 
 # Create an instance of tkinter win
 win = Tk()
 win.title('Dunce Cap GUI (Based off of lithium-ion batteries.csv)')
+
 # Set the size of the tkinter window
 win.geometry('600x300')
 
@@ -17,10 +19,12 @@ def close_win(e):
 
 
 def buttonreset():
+    """ Deletes the entries of all text boxes """
     
     listofoutputs = [outputtxt_formula,outputtxt_nsites,outputtxt_formationenergy,outputtxt_bandgap, outputtxt_density,outputtxt_volume,outputtxt_structure,
                      outputtxt_nsites_score,outputtxt_formationenergy_score,outputtxt_bandgap_score, outputtxt_density_score,outputtxt_volume_score,outputtxt_structure_score]
     for i in range(0,len(listofoutputs)):
+        # unlatches, deletes, relatches
         listofoutputs[i].configure(state = 'normal')
         listofoutputs[i].delete(1.0,'end')
         listofoutputs[i].configure(state = 'disabled')
@@ -33,6 +37,9 @@ def buttonreset():
     
     
 def printInput():
+    
+    """ Gets the user inputs, sorts the data, finds what models to run, and prints computed values"""
+    
     
     listofoutputs = [outputtxt_formula,outputtxt_nsites,outputtxt_formationenergy,outputtxt_bandgap, outputtxt_density,outputtxt_volume,outputtxt_structure,
                      outputtxt_nsites_score,outputtxt_formationenergy_score,outputtxt_bandgap_score, outputtxt_density_score,outputtxt_volume_score,outputtxt_structure_score]
@@ -108,6 +115,9 @@ def printInput():
     for i in range(0,len(listofoutputs)):
         listofoutputs[i].configure(state = 'disabled')
     
+
+""" Everything down below is setting up locations and types of widgets """
+
 # Input Widget
 row = 0
 col = 0
@@ -126,7 +136,8 @@ tk.Label(win, text=' ', font=('Aerial 11')).grid(row=row, column=col,sticky = ' 
 output_label = tk.Label(win, text='Outputs: ', font=('Aerial 11')).grid(row=row, column=col,sticky = ' ', columnspan = 3)
 
 def hidden():
-    from PIL import ImageTk, Image
+    
+    """ OOGA BOOGA """ 
 
     root = tk.Toplevel()
     path = '6485498.png'
