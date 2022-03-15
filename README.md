@@ -5,6 +5,8 @@ Take in some number of parameters and predict a crystal structure for Li-ion ele
 
 It also predicts the missing inputs from the user. As an example, if the user inputs ‘Formula’, ‘Formation Energy’, and ‘Density’, the model will return the predicted crystal structure along with ’Nsites’, ‘Band Gap’, and ‘Volume’.
 
+<img src="docs/workflow.png" alt="Workflow"/>
+
 ## Parameters
 Each input/output parameter (and their units if applicable) are listed:
 
