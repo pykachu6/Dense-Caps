@@ -10,10 +10,10 @@ from sklearn.ensemble import BaggingRegressor, RandomForestRegressor, GradientBo
 from sklearn.model_selection import RandomizedSearchCV
 from sklearn.model_selection import cross_validate
 
-import element_counter
-from element_counter import element_count
-import hyperparameter
-from hyperparameter import decision_tree_builder, random_forest_builder, gradient_boosting_builder
+import crystpredict.element_counter
+from crystpredict.element_counter import element_count
+import crystpredict.hyperparameter
+from crystpredict.hyperparameter import decision_tree_builder, random_forest_builder, gradient_boosting_builder
 
 ################################################ Model Maker ################################################
 

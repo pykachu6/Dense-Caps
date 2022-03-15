@@ -1,0 +1,15 @@
+package:
+     name: crystpredict
+     version: "1.0"
+source:
+     path: .
+
+requirements:
+     build:
+          - python
+          - setuptools
+     run:
+          - python
+test:
+     imports:
+          -crystpredict
