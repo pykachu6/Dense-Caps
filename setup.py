@@ -10,7 +10,7 @@ setup(
     version="0.0.1",
     long_description=readme,
     long_description_content_type="text/markdown",
-    url="https://github.com/pykachu6/Dunce-Caps",
+    url="https://github.com/pykachu6/Dunce-Caps/",
     packages=find_packages(),
     install_requires=requirements,
     classifiers=[
