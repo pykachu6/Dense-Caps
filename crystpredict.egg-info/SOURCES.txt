@@ -1,0 +1,6 @@
+README.md
+setup.py
+crystpredict.egg-info/PKG-INFO
+crystpredict.egg-info/SOURCES.txt
+crystpredict.egg-info/dependency_links.txt
+crystpredict.egg-info/top_level.txt

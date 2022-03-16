@@ -1,4 +1,5 @@
 import setuptools
 
 setuptools.setup(
-    name='crystpredict')
+    name='crystpredict',packages=['numpy', 'pandas']
+    )
