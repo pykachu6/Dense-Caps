@@ -1,5 +1,6 @@
 import setuptools
+from setuptools import find_packages, setup
 
 setuptools.setup(
-    name='crystpredict',packages=['numpy', 'pandas']
+    name='crystpredict',packages=find_packages(where="environment.yml")
     )
